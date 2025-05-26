@@ -50,8 +50,9 @@ except ImportError:
         'postgres://just-user@localhost:5432/app',
         'postgresql+asyncpg://user:pass@localhost:5432/app',
         'postgresql+pg8000://user:pass@localhost:5432/app',
-        'postgresql+psycopg://postgres:postgres@localhost:5432/hatch',
-        'postgresql+psycopg2://postgres:postgres@localhost:5432/hatch',
+        'postgresql+psycopg://postgres:postgres@localhost:5432/app',
+        'postgresql+psycopg_async://postgres:postgres@localhost:5432/app',
+        'postgresql+psycopg2://postgres:postgres@localhost:5432/app',
         'postgresql+psycopg2cffi://user:pass@localhost:5432/app',
         'postgresql+py-postgresql://user:pass@localhost:5432/app',
         'postgresql+pygresql://user:pass@localhost:5432/app',
@@ -482,6 +483,12 @@ def test_ftp_url_port_success(value, expected):
         'postgres://user:pass@localhost:5432/app',
         'postgresql://user:pass@localhost:5432/app',
         'postgresql+asyncpg://user:pass@localhost:5432/app',
+        'postgresql+pg8000://user:pass@localhost:5432/app',
+        'postgresql+psycopg://user:pass@localhost:5432/app',
+        'postgresql+psycopg_async://user:pass@localhost:5432/app',
+        'postgresql+psycopg2://user:pass@localhost:5432/app',
+        'postgresql+psycopg2cffi://user:pass@localhost:5432/app',
+        'postgresql+py-postgresql://user:pass@localhost:5432/app',
         'postgres://user:pass@host1.db.net,host2.db.net:6432/app',
         'postgres://user:pass@%2Fvar%2Flib%2Fpostgresql/dbname',
     ],
@@ -606,7 +613,7 @@ def test_snowflake_dsns(dsn):
                 'loc': ('a',),
                 'msg': (
                     "URL scheme should be 'postgres', 'postgresql', 'postgresql+asyncpg', 'postgresql+pg8000', "
-                    "'postgresql+psycopg', 'postgresql+psycopg2', 'postgresql+psycopg2cffi', "
+                    "'postgresql+psycopg', 'postgresql+psycopg_async', 'postgresql+psycopg2', 'postgresql+psycopg2cffi', "
                     "'postgresql+py-postgresql' or 'postgresql+pygresql'"
                 ),
                 'input': 'http://example.org',
